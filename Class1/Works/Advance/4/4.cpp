@@ -7,7 +7,7 @@ int main()
     int a, b, c, d;
     printf("请输入一个三位数\n");
     scanf("%d",&a);
-    b=a%10, c=(a%100)-b, d = a/100;
+    b=a%10, c=((a%100)-b)/10, d = a/100;
     printf("%d", a);
     printf("的百位是%d",d);
     printf(",十位是%d",c);
