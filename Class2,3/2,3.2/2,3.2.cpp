@@ -10,12 +10,12 @@ void check(int x)
     int i = 0;
     while(i<4)
     {
-        i++;
+        
         int m = x % 10;
-        int j = 5;
-        while (j>0)
+        int j = 0;
+        while (j<4)
         {
-            j--;
+            
             if ((m == numb[j]) && (j == i))
             {
                 a++;
@@ -24,9 +24,10 @@ void check(int x)
             {
                 b++;
             }
-            
+            j++;
         }
         x=x/10;
+        i++;
     }
 }
 
@@ -35,15 +36,15 @@ void check(int x)
 
 int main()
 {
-    int as=0,Repeat = 0;
+    int as=0,Re=0 , re1=0, re2 =0, life = 0;  
    do
     {   
-        Repeat = 0;
+        
         srand(time(0));
         num=rand()%8999+1000;
         as = num;
-        //num=1234;                     测试用
-        //printf("%d\n",num);           显示m，方便调试
+        //num=1234;                     //测试用
+        printf("%d\n",num);           //显示m，方便调试
         int i = 0;
 
 
@@ -60,34 +61,47 @@ int main()
         {
             //printf("%d\n",m);
             m=num%10;
-            j++;
+            
             numb[j]=m;
-            //printf("%d\n",numb[j]);                               测试用
+            //printf("%d\n",numb[j]);                               //测试用
             num/=10;
+            j++;
         }
-        //printf("%d\n",num);                                       测试用
-        //printf("%d%d%d%d\n",numb[1],numb[2],numb[3],numb[4]);     测试用
-        
-    }    
-    while((numb[1]==numb[2]||numb[1]==numb[3]||numb[1]==numb[4]||numb[2]==numb[3]||numb[2]==numb[4]||numb[3]==numb[4])||Repeat != 0 );//四位均不相同
-    {
-        printf("%d",as);
-        int life;
-        for(life=0;life<10;life++)
-        //while(life<10)
-        {   
+        //printf("%d\n",num);                                       //测试用
+        printf("%d%d%d%d\n",numb[0],numb[1],numb[2],numb[3]);     //测试用
+        re1 = 0 ,re2 = 0, Re = 0;                                   //初始化re1，re2，Re
+        while (re1 <4)
+        {
             //printf("a");
-            //life=life+1;
-            printf("请输入你的答案\n");
-            scanf("%d",&gus);
-            check(gus);    
-            printf ("%dA%dB\n",a,b);
-            a=0,b=0;
+            re2=re1+1;
+            while (re2<4)
+            {
+                if (numb[re1]==numb[re2])
+                {
+                    Re++;
+                }
+                re2++;
+            }
+            re1++;
         }
     
-        system("pause");
-        return 0;
-    };
+    }    
+    while(Re != 0 );//四位均不相同
+    //for(life=0;life<10;life++)
+    while(life<10)
+    {   
+        //printf("a");
+        life++;
+        printf("请输入你的答案\n");
+        scanf("%d",&gus);
+        check(gus);    
+        printf ("%dA%dB\n",a,b);
+        a=0,b=0;
+    }
+    
+    system("pause");
+    return 0;
+
     
 
 
